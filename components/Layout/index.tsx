@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import BasicLayout from '../../layout/BasicLayout'
-import { Container, Logo } from './styles'
+import Image from 'next/image';
+import BasicLayout from '../../layout/BasicLayout';
+import { Container, Logo } from './styles';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,5 +16,5 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <footer></footer>
       </Container>
     </BasicLayout>
-  )
+  );
 }
