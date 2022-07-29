@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import LogoImg from '../../public/logo.svg';
 import BasicLayout from '../../layout/BasicLayout';
 import { Container, Logo } from './styles';
 
@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Container>
         <Logo>
           <div>
-            <Image src="/logo.svg" alt="weiss logo" width="64" height="64" />
+            <LogoImg alt="weiss logo" width="64" height="64" />
             WEISS Cinema
           </div>
         </Logo>

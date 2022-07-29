@@ -11,7 +11,7 @@ const Movie = ({ movie }: { movie: IMovie }) => {
 
   return (
     <Container ref={hoverRef}>
-      <Box>
+      <Box isHovered={isHovered}>
         <Image
           src={
             movie.Poster !== POSTER_NOT_AVAILABLE
@@ -19,8 +19,7 @@ const Movie = ({ movie }: { movie: IMovie }) => {
               : '/image-not-available.png'
           }
           alt={movie.Title}
-          width={200}
-          height={300}
+          layout="fill"
           key={movie.imdbID}
         />
       </Box>

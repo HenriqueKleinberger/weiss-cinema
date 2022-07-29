@@ -1,21 +1,22 @@
 import styled from 'styled-components';
 
-export const Title = styled.p`
-  color: var(--white);
-`;
-export const Year = styled.p`
-  color: var(--white);
-`;
-export const Container = styled.div`
-  color: var(--white);
-  fill: currentColor;
-`;
-export const Like = styled.button`
+interface IBtn {
+  active: boolean;
+}
+
+export const Like = styled.button<IBtn>`
   background: none;
-  color: inherit;
+  color: ${(props) => (props.active ? 'var(--primary)' : 'rgba(0,0,0,0.8)')};
   border: none;
   padding: 0;
-  font: inherit;
   cursor: pointer;
-  outline: inherit;
+  outline: red;
+  margin: 7%;
+`;
+
+export const Data = styled.div`
+  color: #e1ab00;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 80%;
 `;

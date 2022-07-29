@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import { useState } from 'react';
 import useWishListLocalStorage from '../../../hooks/useWishlistLocalStorage';
 import { IMovie } from '../../../types';
-import { Title, Year, Container, Like } from './styles';
+import { Like, Data } from './styles';
+import WishlistHeart from '../../../public/heart-solid.svg';
 
 const BasicInfo = ({ movie }: { movie: IMovie }) => {
   const [isMovieOnWishlist, toggleMovieOnWishlist] = useWishListLocalStorage(
@@ -15,14 +15,15 @@ const BasicInfo = ({ movie }: { movie: IMovie }) => {
   };
 
   return (
-    <Container>
-      <Like onClick={toggleMovieWishList}>
-        <Image width={10} height={10} src="/heart-solid.svg" alt="like" />
+    <>
+      <Like onClick={toggleMovieWishList} active={isOnWishlist}>
+        <WishlistHeart width={20} height={20} />
       </Like>
-      <Title>{movie.Title}</Title>
-      <Year>{movie.Year}</Year>
-      {isOnWishlist && 'FAVORITADO'}
-    </Container>
+      <Data>
+        <p>{movie.Title.toUpperCase()}</p>
+        <p>{movie.Year}</p>
+      </Data>
+    </>
   );
 };
 
