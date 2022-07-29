@@ -7,10 +7,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <BasicLayout>
       <Container>
         <Logo>
-          <div>
-            <LogoImg alt="weiss logo" width="64" height="64" />
-            WEISS Cinema
-          </div>
+          <LogoImg alt="weiss logo" width="30" height="30" />
+          WEISS CINEMA
         </Logo>
         {children}
         <footer></footer>
