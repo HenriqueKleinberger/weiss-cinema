@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-// TODO: LER SOBRE COMO MELHORAR NOS FAVORITOS
+import { createGlobalStyle } from 'styled-components';
+
 export const GlobalStyle = createGlobalStyle`
   html,
   body {
@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
       background: black;
     }
   }
-`
+`;
 
 const BasicLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -41,7 +41,7 @@ const BasicLayout = ({ children }: { children: React.ReactNode }) => {
       <GlobalStyle />
       {children}
     </>
-  )
-}
+  );
+};
 
-export default BasicLayout
+export default BasicLayout;
