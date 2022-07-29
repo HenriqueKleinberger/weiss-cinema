@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
+import Movie from '../components/Movie';
 import { IMovie, IOmdbResponse } from '../types';
 import { TRUE } from '../constants/omdbResponse';
+import { MovieContainer } from './styles';
 
 const Home: NextPage = () => {
   const [searched, setSearched] = useState('');
@@ -38,13 +40,13 @@ const Home: NextPage = () => {
         onChange={(e) => setSearched(e.target.value)}
         value={searched}
       />
-      <div>
+      <MovieContainer>
         {movies.length > 0 ? (
-          movies.map((m) => <div key={m.imdbID}>{m.Title}</div>)
+          movies.map((m) => <Movie movie={m} key={m.imdbID} />)
         ) : (
           <div>{errorMessage || 'Buscar um filme'}</div>
         )}
-      </div>
+      </MovieContainer>
     </>
   );
 };
