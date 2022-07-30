@@ -1,7 +1,8 @@
 import { LOCAL_STORAGE_WISHLIST } from '../constants/wishlist';
+import { IMovie } from '../types';
 
-const useWishListLocalStorage = (movieId: string) => {
-  const getMoviesFromLocalStorage = () => {
+const useWishListLocalStorage = (movie: IMovie) => {
+  const getMoviesFromLocalStorage = (): IMovie[] => {
     if (typeof window !== 'undefined') {
       let wishlistMoviesOnLocalStorage = window.localStorage.getItem(
         LOCAL_STORAGE_WISHLIST
@@ -9,7 +10,7 @@ const useWishListLocalStorage = (movieId: string) => {
       if (wishlistMoviesOnLocalStorage) {
         return (wishlistMoviesOnLocalStorage = JSON.parse(
           wishlistMoviesOnLocalStorage
-        )) as string[];
+        )) as IMovie[];
       } else {
         return [];
       }
@@ -19,24 +20,19 @@ const useWishListLocalStorage = (movieId: string) => {
 
   const isMovieOnWishlist = (() => {
     const movies = getMoviesFromLocalStorage();
-    return movies.includes(movieId);
+    return movies.find((m) => m.imdbID === movie.imdbID) !== undefined;
   })();
 
-  const toggleMovieOnWishlist = (movieId: string) => {
-    if (typeof window !== 'undefined') {
-      const movies = getMoviesFromLocalStorage();
-      const index = movies?.indexOf(movieId);
-      if (index !== -1) {
-        movies?.splice(index, 1);
-      } else {
-        movies?.push(movieId);
-      }
-
-      window.localStorage.setItem(
-        LOCAL_STORAGE_WISHLIST,
-        JSON.stringify(movies)
-      );
-    }
+  const toggleMovieOnWishlist = (movie: IMovie) => {
+    const movies = getMoviesFromLocalStorage();
+    window.localStorage.setItem(
+      LOCAL_STORAGE_WISHLIST,
+      JSON.stringify(
+        isMovieOnWishlist
+          ? movies.filter((m) => m.imdbID === movie.imdbID)
+          : movies.concat([movie])
+      )
+    );
   };
   return [isMovieOnWishlist, toggleMovieOnWishlist] as const;
 };

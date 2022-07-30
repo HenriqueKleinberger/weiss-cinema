@@ -1,6 +1,6 @@
 import { MOVIE_NOT_FOUND_MESSAGE } from '../../../constants/messages';
 import SadEmotion from '../../../public/face-frown-open-solid.svg';
-import { Container } from './styles';
+import { Container } from '../styles';
 
 const MovieNotFound = () => {
   return (

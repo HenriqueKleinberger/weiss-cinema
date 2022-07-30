@@ -1,7 +1,7 @@
 export interface IMovie {
+  imdbID: string;
   Title: string;
   Year: string;
-  imdbID: string;
   Poster: string;
 }
 
@@ -11,10 +11,7 @@ export interface IOmdbMoviesResponse {
   Error: string;
 }
 
-export interface IMovieDetails {
-  imdbID: string;
-  Title: string;
-  Year: string;
+export interface IMovieDetails extends IMovie {
   ReleaseDate: string;
   Genre: string;
   Director: string;
@@ -22,6 +19,5 @@ export interface IMovieDetails {
   Plot: string;
   imdbRating: string;
   Website: string;
-  Poster: string;
   Response: string;
 }

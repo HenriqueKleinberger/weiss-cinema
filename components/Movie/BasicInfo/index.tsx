@@ -1,26 +1,30 @@
 import { useState } from 'react';
 import useWishListLocalStorage from '../../../hooks/useWishlistLocalStorage';
 import { IMovie } from '../../../types';
-import { Like, Data } from './styles';
+import { Like, Data, Hovered } from './styles';
 import WishlistHeart from '../../../public/heart-solid.svg';
 import {
   ADD_TO_WISHLIST,
   REMOVE_FROM_WISHLIST,
 } from '../../../constants/messages';
 
+const getMovieTitle = (title: string) => {
+  if (title.length >= 90) return `${title.slice(0, 90).toUpperCase()}...`;
+  else return title.toUpperCase();
+};
+
 const BasicInfo = ({ movie }: { movie: IMovie }) => {
-  const [isMovieOnWishlist, toggleMovieOnWishlist] = useWishListLocalStorage(
-    movie.imdbID
-  );
+  const [isMovieOnWishlist, toggleMovieOnWishlist] =
+    useWishListLocalStorage(movie);
   const [isOnWishlist, setIsOnWishlist] = useState(isMovieOnWishlist);
   const toggleMovieWishList = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
-    toggleMovieOnWishlist(movie.imdbID);
+    toggleMovieOnWishlist(movie);
     setIsOnWishlist(!isMovieOnWishlist);
   };
 
   return (
-    <>
+    <Hovered>
       <Like
         onClick={(e: React.MouseEvent<HTMLElement>) => {
           toggleMovieWishList(e);
@@ -31,10 +35,10 @@ const BasicInfo = ({ movie }: { movie: IMovie }) => {
         <WishlistHeart width={20} height={20} />
       </Like>
       <Data>
-        <p>{movie.Title.toUpperCase()}</p>
+        <p>{getMovieTitle(movie.Title)}</p>
         <p>{movie.Year}</p>
       </Data>
-    </>
+    </Hovered>
   );
 };
 

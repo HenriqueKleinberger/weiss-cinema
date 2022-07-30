@@ -3,9 +3,11 @@ import type { NextPage } from 'next';
 import Movie from '../components/Movie';
 import { IMovie, IOmdbMoviesResponse } from '../types';
 import { TRUE } from '../constants/omdbResponse';
-import { MovieContainer, Input, Search } from './styles';
-import OMDBError from '../components/OMDBError';
+import { MovieContainer, Input, Search, Message, Separator } from './styles';
+import FeedbackMessages from '../components/FeedbackMessages';
+import SearchMovie from '../components/FeedbackMessages/SearchMovie';
 import SearchImg from '../public/search.svg';
+import { SEARCH_RESULTS_FOR } from '../constants/messages';
 
 const Home: NextPage = () => {
   const [searched, setSearched] = useState('');
@@ -37,7 +39,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Search>
-        <SearchImg width={10} height={10} />
+        <SearchImg width={15} height={15} />
         <Input
           type="text"
           placeholder="Search your favorite movie"
@@ -45,11 +47,15 @@ const Home: NextPage = () => {
           value={searched}
         />
       </Search>
+      {searched && <Message>{`${SEARCH_RESULTS_FOR} "${searched}"`}</Message>}
+      <Separator />
       <MovieContainer>
-        {movies.length > 0 ? (
-          movies.map((m) => <Movie movie={m} key={m.imdbID} />)
-        ) : (
-          <OMDBError errorMessage={errorMessage} />
+        {!searched && <SearchMovie />}
+        {searched &&
+          movies.length > 0 &&
+          movies.map((m) => <Movie movie={m} key={m.imdbID} />)}{' '}
+        {searched && movies.length === 0 && (
+          <FeedbackMessages errorMessage={errorMessage} />
         )}
       </MovieContainer>
     </>

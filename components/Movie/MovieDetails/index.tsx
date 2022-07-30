@@ -1,7 +1,5 @@
-import Image from 'next/image';
-import React from 'react';
+import PosterImg from '../Poster';
 import { ERROR_SEARCHING_MOVIE_DETAILS } from '../../../constants/messages';
-import { DATA_NOT_AVAILABLE } from '../../../constants/movie';
 import { IMovieDetails } from '../../../types';
 import {
   Container,
@@ -57,12 +55,7 @@ const MovieDetails = ({
     <Container>
       <Data>
         <Poster>
-          <Image
-            src={movieDetails.Poster}
-            layout="fill"
-            objectFit="contain"
-            alt={`${movieDetails.Title} poster`}
-          />
+          <PosterImg movie={movieDetails} />
         </Poster>
         <Details>
           <MainDetails>
@@ -76,7 +69,7 @@ const MovieDetails = ({
             <p>Actors: {showInfoIfAvailable(movieDetails.Actors)}</p>
             <p>Plot: {showInfoIfAvailable(movieDetails.Plot)}</p>
             <p>IMDB rating: {showInfoIfAvailable(movieDetails.imdbRating)}</p>
-            {movieDetails.Website !== DATA_NOT_AVAILABLE && (
+            {movieDetails.Website && (
               <a
                 href={movieDetails.Website}
                 target="_blank"

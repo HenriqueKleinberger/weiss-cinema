@@ -1,12 +1,11 @@
-import Image from 'next/image';
 import { useState } from 'react';
 import { IMovie, IMovieDetails } from '../../types';
-import { DATA_NOT_AVAILABLE } from '../../constants/movie';
 import useHover from '../../hooks/useHover';
 import BasicInfo from './BasicInfo';
-import { Container, Box, Hovered } from './styles';
+import { Container, Box } from './styles';
 import MovieDetails from './MovieDetails';
-import { FALSE } from '../../constants/omdbResponse';
+import { TRUE } from '../../constants/omdbResponse';
+import Poster from './Poster';
 
 const Movie = ({ movie }: { movie: IMovie }) => {
   const [hoverRef, isHovered, isOut] = useHover<HTMLDivElement>();
@@ -24,10 +23,10 @@ const Movie = ({ movie }: { movie: IMovie }) => {
       );
       const data: IMovieDetails = await response.json();
 
-      if (data.Response === FALSE) {
-        setDetails(null);
-      } else {
+      if (data.Response === TRUE) {
         setDetails(data);
+      } else {
+        setDetails(null);
       }
       setLoading(false);
     } catch (error) {
@@ -39,22 +38,9 @@ const Movie = ({ movie }: { movie: IMovie }) => {
   return (
     <Container ref={hoverRef} onClick={openModal}>
       <Box isHovered={isHovered}>
-        <Image
-          src={
-            movie.Poster !== DATA_NOT_AVAILABLE
-              ? movie.Poster
-              : '/image-not-available.png'
-          }
-          alt={movie.Title}
-          layout="fill"
-          key={movie.imdbID}
-        />
+        <Poster movie={movie} />
       </Box>
-      {isHovered && (
-        <Hovered>
-          <BasicInfo movie={movie} />
-        </Hovered>
-      )}
+      {isHovered && <BasicInfo movie={movie} />}
       {showModal && <MovieDetails movieDetails={details} loading={loading} />}
     </Container>
   );

@@ -81,11 +81,6 @@ export const ErrorData = styled.aside`
 
 export const Poster = styled.div`
   position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
 `;
 
 export const Details = styled.section``;

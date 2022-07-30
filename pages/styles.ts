@@ -25,3 +25,12 @@ export const Input = styled.input`
   }
   margin: 0.3rem;
 `;
+
+export const Message = styled.p`
+  color: var(--white);
+  margin: 0;
+`;
+
+export const Separator = styled.hr`
+  border-top: -0.5px solid var(--white);
+`;
