@@ -9,7 +9,10 @@ import { MovieContainer } from '../styles';
 
 const Wishlist = () => {
   const [searched, setSearched] = useState('');
-  const [movies] = useState<IMovie[]>(getMoviesFromLocalStorage());
+  const [movies, setMovies] = useState<IMovie[]>(getMoviesFromLocalStorage());
+
+  const removeMovieFromWishlist = (movie: IMovie) =>
+    setMovies(movies.filter((m) => m.imdbID !== movie.imdbID));
 
   return (
     <>
@@ -20,7 +23,11 @@ const Wishlist = () => {
       />
       <MovieContainer>
         {movies.map((m) => (
-          <Movie movie={m} key={m.imdbID} />
+          <Movie
+            movie={m}
+            key={m.imdbID}
+            removeMovieFromWishlist={removeMovieFromWishlist}
+          />
         ))}
       </MovieContainer>
     </>

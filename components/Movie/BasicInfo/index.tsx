@@ -4,24 +4,33 @@ import {
   toggleMovieOnWishlist,
 } from '../../../helpers/localStorageWishlist';
 import { IMovie } from '../../../types';
-import { Like, Data, Hovered } from './styles';
 import WishlistHeart from '../../../public/heart-solid.svg';
 import {
   ADD_TO_WISHLIST,
   REMOVE_FROM_WISHLIST,
 } from '../../../constants/messages';
+import { Like, Data, Hovered } from './styles';
 
-const getMovieTitle = (title: string) => {
-  if (title.length >= 90) return `${title.slice(0, 90).toUpperCase()}...`;
-  else return title.toUpperCase();
-};
+interface IProps {
+  movie: IMovie;
+  removeMovieFromWishlist?: (movie: IMovie) => void;
+}
 
-const BasicInfo = ({ movie }: { movie: IMovie }) => {
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const BasicInfo = ({ movie, removeMovieFromWishlist = () => {} }: IProps) => {
   const [isOnWishlist, setIsOnWishlist] = useState(isMovieOnWishlist(movie));
+
   const toggleMovieWishList = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     toggleMovieOnWishlist(movie);
     setIsOnWishlist(!isOnWishlist);
+    removeMovieFromWishlist(movie);
+  };
+
+  const getMovieTitle = () => {
+    if (movie.Title.length >= 90)
+      return `${movie.Title.slice(0, 90).toUpperCase()}...`;
+    else return movie.Title.toUpperCase();
   };
 
   return (
@@ -34,7 +43,7 @@ const BasicInfo = ({ movie }: { movie: IMovie }) => {
         <WishlistHeart width={20} height={20} />
       </Like>
       <Data>
-        <p>{getMovieTitle(movie.Title)}</p>
+        <p>{getMovieTitle()}</p>
         <p>{movie.Year}</p>
       </Data>
     </Hovered>

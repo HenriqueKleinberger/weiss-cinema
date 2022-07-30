@@ -7,7 +7,12 @@ import MovieDetails from './MovieDetails';
 import { TRUE } from '../../constants/omdbResponse';
 import Poster from './Poster';
 
-const Movie = ({ movie }: { movie: IMovie }) => {
+interface IProps {
+  movie: IMovie;
+  removeMovieFromWishlist?: (movie: IMovie) => void;
+}
+
+const Movie = ({ movie, removeMovieFromWishlist }: IProps) => {
   const [hoverRef, isHovered, isOut] = useHover<HTMLDivElement>();
   const [showModal, setShowModal] = useState(false);
   const [details, setDetails] = useState<IMovieDetails | null>(null);
@@ -40,7 +45,12 @@ const Movie = ({ movie }: { movie: IMovie }) => {
       <Box isHovered={isHovered}>
         <Poster movie={movie} />
       </Box>
-      {isHovered && <BasicInfo movie={movie} />}
+      {isHovered && (
+        <BasicInfo
+          movie={movie}
+          removeMovieFromWishlist={removeMovieFromWishlist}
+        />
+      )}
       {showModal && <MovieDetails movieDetails={details} loading={loading} />}
     </Container>
   );
