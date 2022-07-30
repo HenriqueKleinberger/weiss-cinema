@@ -9,14 +9,20 @@ const BasicInfo = ({ movie }: { movie: IMovie }) => {
     movie.imdbID
   );
   const [isOnWishlist, setIsOnWishlist] = useState(isMovieOnWishlist);
-  const toggleMovieWishList = () => {
+  const toggleMovieWishList = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
     toggleMovieOnWishlist(movie.imdbID);
     setIsOnWishlist(!isMovieOnWishlist);
   };
 
   return (
     <>
-      <Like onClick={toggleMovieWishList} active={isOnWishlist}>
+      <Like
+        onClick={(e: React.MouseEvent<HTMLElement>) => {
+          toggleMovieWishList(e);
+        }}
+        active={isOnWishlist}
+      >
         <WishlistHeart width={20} height={20} />
       </Like>
       <Data>

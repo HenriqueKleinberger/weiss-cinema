@@ -15,7 +15,7 @@ export const Like = styled.button<IBtn>`
 `;
 
 export const Data = styled.div`
-  color: #e1ab00;
+  color: var(--secondary);
   text-align: center;
   font-weight: 600;
   margin-top: 80%;

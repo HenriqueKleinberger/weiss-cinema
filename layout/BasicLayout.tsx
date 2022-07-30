@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
 
   :root {
     --primary: #e50914;
+    --secondary: #e1ab00;
     --white: #ffffff;
     --background: #141414;
   }

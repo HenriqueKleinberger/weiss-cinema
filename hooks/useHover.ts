@@ -1,7 +1,7 @@
 /* eslint @typescript-eslint/no-explicit-any: "off" */
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
 
-const useHover = <T>(): [MutableRefObject<T>, boolean] => {
+const useHover = <T>(): [MutableRefObject<T>, boolean, () => void] => {
   const [value, setValue] = useState<boolean>(false);
   const ref: any = useRef<T | null>(null);
   const handleMouseOver = (): void => setValue(true);
@@ -17,7 +17,10 @@ const useHover = <T>(): [MutableRefObject<T>, boolean] => {
       };
     }
   }, []);
-  return [ref, value];
+
+  const isOut = () => setValue(false);
+
+  return [ref, value, isOut];
 };
 
 export default useHover;

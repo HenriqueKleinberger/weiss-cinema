@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
 import Movie from '../components/Movie';
-import { IMovie, IOmdbResponse } from '../types';
+import { IMovie, IOmdbMoviesResponse } from '../types';
 import { TRUE } from '../constants/omdbResponse';
-import { MovieContainer } from './styles';
+import { MovieContainer, Input, Search } from './styles';
+// import SearchImg from '../public/search.svg';
 
 const Home: NextPage = () => {
   const [searched, setSearched] = useState('');
@@ -11,7 +12,7 @@ const Home: NextPage = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
 
   useEffect(() => {
-    if (searched.length < 3) return;
+    if (searched.length === 0) return;
     getMovies(searched);
   }, [searched]);
 
@@ -20,7 +21,7 @@ const Home: NextPage = () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${searched}&page=1`
       );
-      const data: IOmdbResponse = await response.json();
+      const data: IOmdbMoviesResponse = await response.json();
       if (data.Response === TRUE) {
         setMovies(data.Search);
       } else {
@@ -34,12 +35,15 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <input
-        type="text"
-        placeholder="Search your favorite movie"
-        onChange={(e) => setSearched(e.target.value)}
-        value={searched}
-      />
+      <Search>
+        {/* <SearchImg width={10} height={10} /> */}
+        <Input
+          type="text"
+          placeholder="Search your favorite movie"
+          onChange={(e) => setSearched(e.target.value)}
+          value={searched}
+        />
+      </Search>
       <MovieContainer>
         {movies.length > 0 ? (
           movies.map((m) => <Movie movie={m} key={m.imdbID} />)

@@ -1,1 +1,1 @@
-export const POSTER_NOT_AVAILABLE = 'N/A';
+export const DATA_NOT_AVAILABLE = 'N/A';
