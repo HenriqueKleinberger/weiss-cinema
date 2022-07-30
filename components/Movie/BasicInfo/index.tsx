@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import useWishListLocalStorage from '../../../hooks/useWishlistLocalStorage';
+import {
+  isMovieOnWishlist,
+  toggleMovieOnWishlist,
+} from '../../../helpers/localStorageWishlist';
 import { IMovie } from '../../../types';
 import { Like, Data, Hovered } from './styles';
 import WishlistHeart from '../../../public/heart-solid.svg';
@@ -14,21 +17,17 @@ const getMovieTitle = (title: string) => {
 };
 
 const BasicInfo = ({ movie }: { movie: IMovie }) => {
-  const [isMovieOnWishlist, toggleMovieOnWishlist] =
-    useWishListLocalStorage(movie);
-  const [isOnWishlist, setIsOnWishlist] = useState(isMovieOnWishlist);
+  const [isOnWishlist, setIsOnWishlist] = useState(isMovieOnWishlist(movie));
   const toggleMovieWishList = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     toggleMovieOnWishlist(movie);
-    setIsOnWishlist(!isMovieOnWishlist);
+    setIsOnWishlist(!isOnWishlist);
   };
 
   return (
     <Hovered>
       <Like
-        onClick={(e: React.MouseEvent<HTMLElement>) => {
-          toggleMovieWishList(e);
-        }}
+        onClick={(e: React.MouseEvent<HTMLElement>) => toggleMovieWishList(e)}
         active={isOnWishlist}
         aria-label={isOnWishlist ? REMOVE_FROM_WISHLIST : ADD_TO_WISHLIST}
       >

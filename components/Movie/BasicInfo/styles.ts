@@ -31,4 +31,5 @@ export const Hovered = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  cursor: pointer;
 `;
