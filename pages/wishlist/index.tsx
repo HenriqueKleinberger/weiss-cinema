@@ -5,6 +5,7 @@ import SearchMovieSeparator from '../../components/SearchMovieSeparator';
 import { SEARCH_RESULTS_FOR_ON_WISHLIST } from '../../constants/messages';
 import { getMoviesFromLocalStorage } from '../../helpers/localStorageWishlist';
 import { IMovie } from '../../types';
+import EmptyWishlist from '../../components/FeedbackMessages/EmptyWishlist';
 import { MovieContainer } from '../styles';
 
 const Wishlist = () => {
@@ -22,13 +23,21 @@ const Wishlist = () => {
         message={SEARCH_RESULTS_FOR_ON_WISHLIST}
       />
       <MovieContainer>
-        {movies.map((m) => (
-          <Movie
-            movie={m}
-            key={m.imdbID}
-            removeMovieFromWishlist={removeMovieFromWishlist}
-          />
-        ))}
+        {movies.length === 0 ? (
+          <EmptyWishlist />
+        ) : (
+          movies
+            .filter((m) =>
+              m.Title.toLowerCase().includes(searched.toLowerCase())
+            )
+            .map((m) => (
+              <Movie
+                movie={m}
+                key={m.imdbID}
+                removeMovieFromWishlist={removeMovieFromWishlist}
+              />
+            ))
+        )}
       </MovieContainer>
     </>
   );

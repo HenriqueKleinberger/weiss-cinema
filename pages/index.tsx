@@ -3,13 +3,13 @@ import type { NextPage } from 'next';
 import Movie from '../components/Movie';
 import { IMovie, IOmdbMoviesResponse } from '../types';
 import { TRUE } from '../constants/omdbResponse';
-import { MovieContainer } from './styles';
-import FeedbackMessages from '../components/FeedbackMessages';
 import SearchMovie from '../components/FeedbackMessages/SearchMovie';
 
 import { SEARCH_RESULTS_FOR } from '../constants/messages';
 import SearchInput from '../components/SearchInput';
 import SearchMovieSeparator from '../components/SearchMovieSeparator';
+import OMDBError from '../components/FeedbackMessages/OMDBError';
+import { MovieContainer } from './styles';
 
 const Home: NextPage = () => {
   const [searched, setSearched] = useState('');
@@ -48,7 +48,7 @@ const Home: NextPage = () => {
           movies.length > 0 &&
           movies.map((m) => <Movie movie={m} key={m.imdbID} />)}{' '}
         {searched && movies.length === 0 && (
-          <FeedbackMessages errorMessage={errorMessage} />
+          <OMDBError message={errorMessage} />
         )}
       </MovieContainer>
     </>
