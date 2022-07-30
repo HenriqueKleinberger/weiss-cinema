@@ -12,6 +12,8 @@ export const Search = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+  fill: currentColor;
+  color: var(--white);
 `;
 
 export const Input = styled.input`
@@ -21,4 +23,5 @@ export const Input = styled.input`
   &:focus {
     outline: 0.1em var(--secondary);
   }
+  margin: 0.3rem;
 `;

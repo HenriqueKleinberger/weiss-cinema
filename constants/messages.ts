@@ -1,2 +1,5 @@
 export const ERROR_SEARCHING_MOVIE_DETAILS =
-  'ERROR ON SEARCHING THE MOVIE DETAILS';
+  'Error on searching the movie details.';
+export const MOVIE_NOT_FOUND_MESSAGE = 'Movie not found.';
+export const REMOVE_FROM_WISHLIST = 'remove from wishlist';
+export const ADD_TO_WISHLIST = 'add to wishlist';

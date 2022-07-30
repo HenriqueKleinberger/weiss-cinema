@@ -3,6 +3,10 @@ import useWishListLocalStorage from '../../../hooks/useWishlistLocalStorage';
 import { IMovie } from '../../../types';
 import { Like, Data } from './styles';
 import WishlistHeart from '../../../public/heart-solid.svg';
+import {
+  ADD_TO_WISHLIST,
+  REMOVE_FROM_WISHLIST,
+} from '../../../constants/messages';
 
 const BasicInfo = ({ movie }: { movie: IMovie }) => {
   const [isMovieOnWishlist, toggleMovieOnWishlist] = useWishListLocalStorage(
@@ -22,6 +26,7 @@ const BasicInfo = ({ movie }: { movie: IMovie }) => {
           toggleMovieWishList(e);
         }}
         active={isOnWishlist}
+        aria-label={isOnWishlist ? REMOVE_FROM_WISHLIST : ADD_TO_WISHLIST}
       >
         <WishlistHeart width={20} height={20} />
       </Like>

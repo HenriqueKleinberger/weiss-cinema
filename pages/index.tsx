@@ -4,7 +4,8 @@ import Movie from '../components/Movie';
 import { IMovie, IOmdbMoviesResponse } from '../types';
 import { TRUE } from '../constants/omdbResponse';
 import { MovieContainer, Input, Search } from './styles';
-// import SearchImg from '../public/search.svg';
+import OMDBError from '../components/OMDBError';
+import SearchImg from '../public/search.svg';
 
 const Home: NextPage = () => {
   const [searched, setSearched] = useState('');
@@ -36,7 +37,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Search>
-        {/* <SearchImg width={10} height={10} /> */}
+        <SearchImg width={10} height={10} />
         <Input
           type="text"
           placeholder="Search your favorite movie"
@@ -48,7 +49,7 @@ const Home: NextPage = () => {
         {movies.length > 0 ? (
           movies.map((m) => <Movie movie={m} key={m.imdbID} />)
         ) : (
-          <div>{errorMessage || 'Buscar um filme'}</div>
+          <OMDBError errorMessage={errorMessage} />
         )}
       </MovieContainer>
     </>
