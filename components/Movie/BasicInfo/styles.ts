@@ -6,12 +6,14 @@ interface IBtn {
 
 export const Like = styled.button<IBtn>`
   background: none;
-  color: ${(props) => (props.active ? 'var(--primary)' : 'rgba(0,0,0,0.8)')};
   border: none;
   padding: 0;
   cursor: pointer;
   outline: red;
   margin: 7%;
+  stroke: var(--primary);
+  stroke-width: 25px;
+  fill: ${(props) => (props.active ? 'var(--primary)' : '#000000')};
 `;
 
 export const Data = styled.div`
