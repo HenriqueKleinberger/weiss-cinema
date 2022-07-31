@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${searched}&page=1`
+          `${process.env.NEXT_PUBLIC_API_URL}/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${searched}*&page=1`
         );
         const data: IOmdbMoviesResponse = await response.json();
         if (data.Response === TRUE) {
@@ -49,7 +49,7 @@ const Home: NextPage = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${searched}&page=${newPage}`
+          `${process.env.NEXT_PUBLIC_API_URL}/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${searched}*&page=${newPage}`
         );
         const data: IOmdbMoviesResponse = await response.json();
         if (data.Response === TRUE || data.Response === MOVIE_NOT_FOUND) {
@@ -73,10 +73,14 @@ const Home: NextPage = () => {
     window.removeEventListener('scroll', onScroll);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [loading, searched, page]);
 
   const onScroll = () => {
-    if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+    if (
+      !loading &&
+      searched &&
+      window.innerHeight + window.scrollY >= document.body.scrollHeight
+    ) {
       setPage((p) => p + 1);
     }
   };
