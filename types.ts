@@ -9,6 +9,7 @@ export interface IMoviesResponse {
   movies: IMovie[];
   isSuccessful: boolean;
   message: string;
+  totalResults: number;
 }
 
 export interface IMovieDetails extends IMovie {
