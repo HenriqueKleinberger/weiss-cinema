@@ -4,7 +4,6 @@ import useHover from '../../hooks/useHover';
 import BasicInfo from './BasicInfo';
 import { Container, Box } from './styles';
 import MovieDetails from './MovieDetails';
-import { TRUE } from '../../constants/omdbResponse';
 import Poster from './Poster';
 
 interface IProps {
@@ -24,11 +23,11 @@ const Movie = ({ movie, removeMovieFromWishlist }: IProps) => {
     isOut();
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&i=${movie.imdbID}`
+        `${process.env.NEXT_PUBLIC_API_URL}/movie/details?&imdbId=${movie.imdbID}`
       );
       const data: IMovieDetails = await response.json();
 
-      if (data.Response === TRUE) {
+      if (data.isSuccessful) {
         setDetails(data);
       } else {
         setDetails(null);

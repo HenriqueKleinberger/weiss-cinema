@@ -59,24 +59,27 @@ const MovieDetails = ({
         </Poster>
         <Details>
           <MainDetails>
-            <Title>{movieDetails.Title}</Title>
-            <Year>{movieDetails.Year}</Year>
+            <Title>{movieDetails.title}</Title>
+            <Year>{movieDetails.year}</Year>
           </MainDetails>
           <OtherDetails>
-            <p>Genre: {showInfoIfAvailable(movieDetails.Genre)}</p>
-            <p>Release Date: {showInfoIfAvailable(movieDetails.ReleaseDate)}</p>
-            <p>Director: {showInfoIfAvailable(movieDetails.Director)}</p>
-            <p>Actors: {showInfoIfAvailable(movieDetails.Actors)}</p>
-            <p>Plot: {showInfoIfAvailable(movieDetails.Plot)}</p>
+            <p>Genre: {showInfoIfAvailable(movieDetails.genre)}</p>
+            <p>Release Date: {showInfoIfAvailable(movieDetails.releaseDate)}</p>
+            <p>Director: {showInfoIfAvailable(movieDetails.director)}</p>
+            <p>Actors: {showInfoIfAvailable(movieDetails.actors)}</p>
+            <p>Plot: {showInfoIfAvailable(movieDetails.plot)}</p>
             <p>IMDB rating: {showInfoIfAvailable(movieDetails.imdbRating)}</p>
-            {movieDetails.Website && (
-              <a
-                href={movieDetails.Website}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Website: {movieDetails.Website}
-              </a>
+            {movieDetails.website && (
+              <p>
+                Website:{' '}
+                <a
+                  href={movieDetails.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {movieDetails.website}
+                </a>
+              </p>
             )}
           </OtherDetails>
         </Details>

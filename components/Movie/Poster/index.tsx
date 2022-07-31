@@ -6,11 +6,11 @@ const Poster = ({ movie }: { movie: IMovie }) => {
   return (
     <Image
       src={
-        movie.Poster !== DATA_NOT_AVAILABLE
-          ? movie.Poster
+        movie.poster !== DATA_NOT_AVAILABLE
+          ? movie.poster
           : '/image-not-available.png'
       }
-      alt={movie.Title}
+      alt={movie.title}
       layout="fill"
     />
   );

@@ -28,7 +28,7 @@ const Wishlist = () => {
         ) : (
           movies
             .filter((m) =>
-              m.Title.toLowerCase().includes(searched.toLowerCase())
+              m?.title?.toLowerCase().includes(searched.toLowerCase())
             )
             .map((m) => (
               <Movie

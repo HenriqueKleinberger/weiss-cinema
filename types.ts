@@ -1,23 +1,23 @@
 export interface IMovie {
   imdbID: string;
-  Title: string;
-  Year: string;
-  Poster: string;
+  title: string;
+  year: string;
+  poster: string;
 }
 
-export interface IOmdbMoviesResponse {
-  Search: IMovie[];
-  Response: string;
-  Error: string;
+export interface IMoviesResponse {
+  movies: IMovie[];
+  isSuccessful: boolean;
+  message: string;
 }
 
 export interface IMovieDetails extends IMovie {
-  ReleaseDate: string;
-  Genre: string;
-  Director: string;
-  Actors: string;
-  Plot: string;
+  releaseDate: string;
+  genre: string;
+  director: string;
+  actors: string;
+  plot: string;
   imdbRating: string;
-  Website: string;
-  Response: string;
+  website: string;
+  isSuccessful: boolean;
 }

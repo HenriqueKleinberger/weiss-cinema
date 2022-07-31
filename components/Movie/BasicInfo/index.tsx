@@ -28,9 +28,9 @@ const BasicInfo = ({ movie, removeMovieFromWishlist = () => {} }: IProps) => {
   };
 
   const getMovieTitle = () => {
-    if (movie.Title.length >= 90)
-      return `${movie.Title.slice(0, 90).toUpperCase()}...`;
-    else return movie.Title.toUpperCase();
+    if (movie.title.length >= 90)
+      return `${movie.title.slice(0, 90).toUpperCase()}...`;
+    else return movie.title.toUpperCase();
   };
 
   return (
@@ -44,7 +44,7 @@ const BasicInfo = ({ movie, removeMovieFromWishlist = () => {} }: IProps) => {
       </Like>
       <Data>
         <p>{getMovieTitle()}</p>
-        <p>{movie.Year}</p>
+        <p>{movie.year}</p>
       </Data>
     </Hovered>
   );
