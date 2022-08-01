@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchMovie should match snapshot when is not  1`] = `
+<styled.div>
+  <logo.svg
+    height={100}
+    width={100}
+  />
+  <p>
+    Search a movie.
+  </p>
+</styled.div>
+`;

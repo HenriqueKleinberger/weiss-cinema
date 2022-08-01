@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyWishlist should match snapshot when is not  1`] = `
+<styled.div>
+  <logo.svg
+    height={100}
+    width={100}
+  />
+  <p>
+    Your wishlist is empty, save new movies of your interest
+  </p>
+</styled.div>
+`;

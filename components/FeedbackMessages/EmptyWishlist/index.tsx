@@ -2,7 +2,7 @@ import { EMPTY_WISHLIST } from '../../../constants/messages';
 import MovieImg from '../../../public/logo.svg';
 import { Container } from '../styles';
 
-const SearchMovie = () => {
+const EmptyWishlist = () => {
   return (
     <Container>
       <MovieImg width={100} height={100} />
@@ -11,4 +11,4 @@ const SearchMovie = () => {
   );
 };
 
-export default SearchMovie;
+export default EmptyWishlist;
