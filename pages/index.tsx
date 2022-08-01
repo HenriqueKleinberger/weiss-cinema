@@ -3,7 +3,6 @@
 import { useState, useRef, useCallback } from 'react';
 import type { NextPage } from 'next';
 import Movie from '../components/Movie';
-import SearchMovie from '../components/FeedbackMessages/SearchMovie';
 
 import { SEARCH_RESULTS_FOR } from '../constants/messages';
 import SearchInput from '../components/SearchInput';
@@ -12,6 +11,7 @@ import OMDBError from '../components/FeedbackMessages/OMDBError';
 import { MovieContainer } from './styles';
 import useMovieSearch from '../hooks/useMovieSearch';
 import MoviesLoading from '../components/Loading/MoviesLoading';
+import Wishlist from '../components/Wishlist';
 
 const Home: NextPage = () => {
   const [query, setQuery] = useState('');
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
       <SearchInput value={query} setValue={changeQuery} />
       <SearchMovieSeparator searched={query} message={SEARCH_RESULTS_FOR} />
       <MovieContainer>
-        {!query && !loading && <SearchMovie />}
+        {!query && !loading && <Wishlist />}
         {movies.map((m, index) => {
           if (movies.length === index + 1) {
             return (

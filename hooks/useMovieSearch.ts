@@ -35,7 +35,10 @@ export default function useMovieSearch(query: string, page: number) {
         setLoading(false);
       })
       .catch((e) => {
-        if (axios.isCancel(e)) return;
+        if (axios.isCancel(e)) {
+          setLoading(false);
+          return;
+        }
         setLoading(false);
         setErrorMessage(e.message);
       });
