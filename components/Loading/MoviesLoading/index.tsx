@@ -1,9 +1,9 @@
 import React from 'react';
-import { ContainerLoading, LoadingMovie } from './styles';
+import { LoadingMovie } from './styles';
 
 const MoviesLoading = () => {
   return (
-    <ContainerLoading>
+    <>
       <LoadingMovie />
       <LoadingMovie />
       <LoadingMovie />
@@ -14,7 +14,7 @@ const MoviesLoading = () => {
       <LoadingMovie />
       <LoadingMovie />
       <LoadingMovie />
-    </ContainerLoading>
+    </>
   );
 };
 

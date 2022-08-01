@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchMovie should match snapshot when is not  1`] = `
+exports[`SearchMovie should match snapshot 1`] = `
 <styled.div>
   <logo.svg
     height={100}

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import EmptyWishlist from './index';
 
 describe('EmptyWishlist', () => {
-  it('should match snapshot when is not ', () => {
+  it('should match snapshot', () => {
     const wrapper = shallow(<EmptyWishlist />);
     expect(wrapper).toMatchSnapshot();
   });

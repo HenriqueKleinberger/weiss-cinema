@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OMDBError should match snapshot when is generic message 1`] = `
+exports[`OMDBError should match snapshot when is message is generic 1`] = `
 <styled.div>
   <p>
     Error

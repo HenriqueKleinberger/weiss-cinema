@@ -4,7 +4,7 @@ import OMDBError from './index';
 import { MOVIE_NOT_FOUND } from '../../../constants/omdbResponse';
 
 describe('OMDBError', () => {
-  it('should match snapshot when is generic message', () => {
+  it('should match snapshot when is message is generic', () => {
     const wrapper = shallow(<OMDBError message="Error" />);
     expect(wrapper).toMatchSnapshot();
   });

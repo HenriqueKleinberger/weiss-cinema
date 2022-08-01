@@ -6,8 +6,8 @@ interface IBox {
 
 export const Container = styled.div`
   position: relative;
-  width: 200px;
-  height: 300px;
+  height: 18.75rem;
+  width: 12.5rem;
 `;
 export const Box = styled.div<IBox>`
   width: 100%;
