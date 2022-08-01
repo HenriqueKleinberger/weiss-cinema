@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BasicInfo should match snapshot when movie is not on wishlist 1`] = `
+<styled.div>
+  <styled.button
+    active={false}
+    aria-label="add to wishlist"
+    onClick={[Function]}
+  >
+    <heart-solid.svg
+      height={20}
+      width={20}
+    />
+  </styled.button>
+  <styled.div>
+    <p>
+      TITLE
+    </p>
+    <p>
+      2022
+    </p>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`BasicInfo should match snapshot when movie is on wishlist 1`] = `
+<styled.div>
+  <styled.button
+    active={true}
+    aria-label="remove from wishlist"
+    onClick={[Function]}
+  >
+    <heart-solid.svg
+      height={20}
+      width={20}
+    />
+  </styled.button>
+  <styled.div>
+    <p>
+      TITLE
+    </p>
+    <p>
+      2022
+    </p>
+  </styled.div>
+</styled.div>
+`;

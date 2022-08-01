@@ -7,12 +7,13 @@ module.exports = {
   testMatch: ['**/*.(test|spec).(ts|tsx)'],
   globals: {
     'ts-jest': {
-      useBabelrc: true,
-      tsConfigFile: 'jest.tsconfig.json',
+      babelConfig: true,
+      tsconfig: 'jest.tsconfig.json',
     },
   },
+
   coveragePathIgnorePatterns: ['/node_modules/', 'enzyme.js'],
-  setupFilesAfterEnv: ['<rootDir>/enzyme.js'],
+  setupFilesAfterEnv: ['<rootDir>/enzyme.js', 'jest-localstorage-mock'],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
@@ -20,4 +21,5 @@ module.exports = {
     '\\.(css|less|scss)$': '<rootDir>/__mocks__/mocks.js',
   },
   snapshotSerializers: ['enzyme-to-json/serializer'],
+  resetMocks: false,
 };
