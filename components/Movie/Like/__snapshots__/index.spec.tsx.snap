@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Like should match snapshot when movie is not on wishlist 1`] = `
+<styled.button
+  active={false}
+  aria-label="add to wishlist"
+  onClick={[Function]}
+>
+  <heart-solid.svg
+    height={20}
+    width={20}
+  />
+</styled.button>
+`;
