@@ -13,17 +13,23 @@ import {
   ErrorData,
   PosterLoading,
   InfoLoading,
+  Headline,
 } from './styles';
+import Like from '../Like';
 
-const showInfoIfAvailable = (info: string) => info || 'N/A';
+interface IProps {
+  movieDetails: IMovieDetails | null;
+  loading: boolean;
+  removeMovieFromWishlist?: () => void;
+}
+
+const showInfo = (info: string) => info || 'N/A';
 
 const MovieDetails = ({
   movieDetails,
   loading,
-}: {
-  movieDetails: IMovieDetails | null;
-  loading: boolean;
-}) => {
+  removeMovieFromWishlist,
+}: IProps) => {
   if (loading) {
     return (
       <Container>
@@ -59,16 +65,22 @@ const MovieDetails = ({
         </Poster>
         <Details>
           <MainDetails>
-            <Title>{movieDetails.title}</Title>
+            <Headline>
+              <Title>{movieDetails.title}</Title>
+              <Like
+                movie={movieDetails}
+                removeMovieFromWishlist={removeMovieFromWishlist}
+              />
+            </Headline>
             <Year>{movieDetails.year}</Year>
           </MainDetails>
           <OtherDetails>
-            <p>Genre: {showInfoIfAvailable(movieDetails.genre)}</p>
-            <p>Release Date: {showInfoIfAvailable(movieDetails.releaseDate)}</p>
-            <p>Director: {showInfoIfAvailable(movieDetails.director)}</p>
-            <p>Actors: {showInfoIfAvailable(movieDetails.actors)}</p>
-            <p>Plot: {showInfoIfAvailable(movieDetails.plot)}</p>
-            <p>IMDB rating: {showInfoIfAvailable(movieDetails.imdbRating)}</p>
+            <p>Genre: {showInfo(movieDetails.genre)}</p>
+            <p>Release Date: {showInfo(movieDetails.releaseDate)}</p>
+            <p>Director: {showInfo(movieDetails.director)}</p>
+            <p>Actors: {showInfo(movieDetails.actors)}</p>
+            <p>Plot: {showInfo(movieDetails.plot)}</p>
+            <p>IMDB rating: {showInfo(movieDetails.imdbRating)}</p>
             {movieDetails.website && (
               <p>
                 Website:{' '}

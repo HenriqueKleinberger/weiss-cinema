@@ -13,9 +13,9 @@ export default function useMovieSearch(query: string, page: number) {
   }, [query]);
 
   useEffect(() => {
+    setErrorMessage('');
     if (query.length === 0) return;
     setLoading(true);
-    setErrorMessage('');
     let cancel: Canceler;
     axios
       .get<IMoviesResponse>(`${process.env.NEXT_PUBLIC_API_URL}/movie`, {

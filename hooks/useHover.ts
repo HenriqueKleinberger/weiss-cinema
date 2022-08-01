@@ -18,9 +18,9 @@ const useHover = <T>(): [MutableRefObject<T>, boolean, () => void] => {
     }
   }, []);
 
-  const isOut = () => setValue(false);
+  const removeHover = () => setValue(false);
 
-  return [ref, value, isOut];
+  return [ref, value, removeHover];
 };
 
 export default useHover;

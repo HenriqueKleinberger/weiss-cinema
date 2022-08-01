@@ -1,21 +1,5 @@
 import styled from 'styled-components';
 
-interface IBtn {
-  active: boolean;
-}
-
-export const Like = styled.button<IBtn>`
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  outline: red;
-  margin: 7%;
-  stroke: var(--primary);
-  stroke-width: 25px;
-  fill: ${(props) => (props.active ? 'var(--primary)' : '#000000')};
-`;
-
 export const Data = styled.div`
   color: var(--secondary);
   text-align: center;
@@ -34,4 +18,8 @@ export const Hovered = styled.div`
   top: 0;
   left: 0;
   cursor: pointer;
+`;
+
+export const Wishlist = styled.div`
+  margin: 7%;
 `;

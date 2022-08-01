@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Movie from '../../components/Movie';
 import SearchInput from '../../components/SearchInput';
 import SearchMovieSeparator from '../../components/SearchMovieSeparator';
@@ -10,7 +10,12 @@ import { MovieContainer } from '../styles';
 
 const Wishlist = () => {
   const [searched, setSearched] = useState('');
-  const [movies, setMovies] = useState<IMovie[]>(getMoviesFromLocalStorage());
+  const [movies, setMovies] = useState<IMovie[]>([]);
+
+  useEffect(() => {
+    const moviesFromLocalStorage = getMoviesFromLocalStorage();
+    setMovies(moviesFromLocalStorage);
+  }, []);
 
   const removeMovieFromWishlist = (movie: IMovie) =>
     setMovies(movies.filter((m) => m.imdbID !== movie.imdbID));

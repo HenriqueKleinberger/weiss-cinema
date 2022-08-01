@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import BasicInfo from './index';
 
 import {
-  isMovieOnWishlist,
-  toggleMovieOnWishlist,
+  isMovieOnLocalStorage,
+  toggleMovieOnLocalStorage,
 } from '../../../helpers/localStorageWishlist';
 import { Like } from './styles';
 
@@ -20,7 +20,7 @@ describe('BasicInfo', () => {
   });
 
   it('should match snapshot when movie is not on wishlist', () => {
-    (isMovieOnWishlist as jest.Mock).mockReturnValue(false);
+    (isMovieOnLocalStorage as jest.Mock).mockReturnValue(false);
     const wrapper = shallow(
       <BasicInfo
         movie={{
@@ -36,7 +36,7 @@ describe('BasicInfo', () => {
   });
 
   it('should match snapshot when movie is on wishlist', () => {
-    (isMovieOnWishlist as jest.Mock).mockReturnValue(true);
+    (isMovieOnLocalStorage as jest.Mock).mockReturnValue(true);
     const wrapper = shallow(
       <BasicInfo
         movie={{
@@ -52,7 +52,7 @@ describe('BasicInfo', () => {
   });
 
   it('title needs to be shorten when is bigger than 90 characters', () => {
-    (isMovieOnWishlist as jest.Mock).mockReturnValue(true);
+    (isMovieOnLocalStorage as jest.Mock).mockReturnValue(true);
     const wrapper = shallow(
       <BasicInfo
         movie={{
@@ -85,7 +85,7 @@ describe('BasicInfo', () => {
     );
     wrapper.find(Like).at(0).simulate('click', { stopPropagation });
 
-    expect(toggleMovieOnWishlist).toHaveBeenCalledTimes(1);
+    expect(toggleMovieOnLocalStorage).toHaveBeenCalledTimes(1);
     expect(stopPropagation).toHaveBeenCalledTimes(1);
     expect(removeMovieFromWishlist).toHaveBeenCalledTimes(1);
   });
