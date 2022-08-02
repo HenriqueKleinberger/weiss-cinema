@@ -40,7 +40,7 @@ const Wishlist = () => {
                 movie={m}
                 key={m.imdbID}
                 removeMovieFromWishlist={removeMovieFromWishlist}
-                isWishlistPage
+                shouldShowLikeButton
               />
             ))
         )}

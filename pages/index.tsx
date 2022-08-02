@@ -26,7 +26,7 @@ const Home: NextPage = () => {
   const lastMovieElementRef = useCallback(
     (node: Element) => {
       if (loading) return;
-      if (observer.current) observer.current.disconnect();
+      observer.current?.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (
           entries[0].isIntersecting &&

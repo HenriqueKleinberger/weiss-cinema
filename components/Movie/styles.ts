@@ -9,6 +9,7 @@ export const Container = styled.div`
   height: 18.75rem;
   width: 12.5rem;
 `;
+
 export const Box = styled.div<IBox>`
   width: 100%;
   height: 100%;
@@ -18,7 +19,7 @@ export const Box = styled.div<IBox>`
   left: 0;
 `;
 
-export const ShowButtonOnWishlist = styled.div`
+export const ShowLikeButton = styled.div`
   z-index: 1;
   width: 100%;
   height: 100%;

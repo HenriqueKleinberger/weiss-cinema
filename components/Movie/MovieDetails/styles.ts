@@ -76,6 +76,6 @@ export const OtherDetails = styled.section`
   margin: 0.5rem;
 `;
 
-export const Headline = styled.div`
+export const Row = styled.div`
   display: flex;
 `;

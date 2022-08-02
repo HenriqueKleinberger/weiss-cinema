@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { IMovie, IMovieDetails } from '../../types';
 import useHover from '../../hooks/useHover';
 import BasicInfo from './BasicInfo';
-import { Container, Box, ShowButtonOnWishlist } from './styles';
+import { Container, Box, ShowLikeButton } from './styles';
 import MovieDetails from './MovieDetails';
 import Poster from './Poster';
 import axios from 'axios';
@@ -11,10 +11,14 @@ import Like from './Like';
 interface IProps {
   movie: IMovie;
   removeMovieFromWishlist?: (movie: IMovie) => void;
-  isWishlistPage: boolean;
+  shouldShowLikeButton: boolean;
 }
 
-const Movie = ({ movie, removeMovieFromWishlist, isWishlistPage }: IProps) => {
+const Movie = ({
+  movie,
+  removeMovieFromWishlist,
+  shouldShowLikeButton,
+}: IProps) => {
   const [hoverRef, isHovered, removeHover] = useHover<HTMLDivElement>();
   const [showModal, setShowModal] = useState(false);
   const [details, setDetails] = useState<IMovieDetails | null>(null);
@@ -39,7 +43,6 @@ const Movie = ({ movie, removeMovieFromWishlist, isWishlistPage }: IProps) => {
       if (response.data.isSuccessful) setDetails(response.data);
       else setDetails(null);
     } catch (error) {
-      console.log(error);
       setDetails(null);
     }
     setLoading(false);
@@ -49,13 +52,10 @@ const Movie = ({ movie, removeMovieFromWishlist, isWishlistPage }: IProps) => {
     <Container ref={hoverRef} onClick={openModal}>
       <Box isHovered={isHovered}>
         <Poster movie={movie} isDetails={false} />
-        {isWishlistPage && (
-          <ShowButtonOnWishlist>
-            <Like
-              removeMovieFromWishlist={removeMovieFromWishlist}
-              movie={movie}
-            />
-          </ShowButtonOnWishlist>
+        {shouldShowLikeButton && (
+          <ShowLikeButton>
+            <Like action={removeMovieFromWishlist} movie={movie} />
+          </ShowLikeButton>
         )}
       </Box>
       {isHovered && (
