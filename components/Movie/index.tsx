@@ -30,7 +30,7 @@ const Movie = ({ movie, removeMovieFromWishlist, isWishlistPage }: IProps) => {
     setLoading(true);
     try {
       const response = await axios.get<IMovieDetails>(
-        `${process.env.NEXT_PUBLIC_API_URL}/movie/details`,
+        `${process.env.NEXT_PUBLIC_API_URL}/OMDB/movie/details`,
         {
           params: { imdbId: movie.imdbID },
         }
@@ -39,6 +39,7 @@ const Movie = ({ movie, removeMovieFromWishlist, isWishlistPage }: IProps) => {
       if (response.data.isSuccessful) setDetails(response.data);
       else setDetails(null);
     } catch (error) {
+      console.log(error);
       setDetails(null);
     }
     setLoading(false);
