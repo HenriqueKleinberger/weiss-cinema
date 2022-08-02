@@ -48,7 +48,7 @@ const Movie = ({ movie, removeMovieFromWishlist, isWishlistPage }: IProps) => {
   return (
     <Container ref={hoverRef} onClick={openModal}>
       <Box isHovered={isHovered}>
-        <Poster movie={movie} />
+        <Poster movie={movie} isDetails={false} />
         {isWishlistPage && (
           <ShowButtonOnWishlist>
             <Like

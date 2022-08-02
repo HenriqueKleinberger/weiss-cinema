@@ -37,6 +37,15 @@ export const Data = styled.aside`
   display: grid;
   grid-template-columns: 1.5fr 2fr;
   overflow: auto;
+
+  @media (max-width: 992px) {
+    height: 75%;
+    width: 65%;
+  }
+  @media (max-width: 778px) {
+    height: 85%;
+    width: 80%;
+  }
 `;
 
 export const ErrorData = styled.aside`
@@ -49,10 +58,6 @@ export const ErrorData = styled.aside`
   align-content: center;
   flex-direction: column;
   text-align: center;
-`;
-
-export const Poster = styled.div`
-  position: relative;
 `;
 
 export const Details = styled.section``;

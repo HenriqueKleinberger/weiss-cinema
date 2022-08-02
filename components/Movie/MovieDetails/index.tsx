@@ -9,7 +9,6 @@ import {
   Title,
   Year,
   OtherDetails,
-  Poster,
   ErrorData,
   PosterLoading,
   InfoLoading,
@@ -60,9 +59,7 @@ const MovieDetails = ({
   return (
     <Container>
       <Data>
-        <Poster>
-          <PosterImg movie={movieDetails} />
-        </Poster>
+        <PosterImg movie={movieDetails} isDetails />
         <Details>
           <MainDetails>
             <Headline>

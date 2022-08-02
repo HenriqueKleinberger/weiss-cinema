@@ -22,6 +22,10 @@ export const Logo = styled.div`
 export const Header = styled.header`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 export const Navigation = styled.nav`
