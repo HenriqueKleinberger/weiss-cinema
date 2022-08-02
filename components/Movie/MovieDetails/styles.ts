@@ -57,7 +57,7 @@ export const Poster = styled.div`
 
 export const Details = styled.section``;
 export const Title = styled.h1`
-  margin: 0;
+  margin: 0 0.2rem 0 0;
 `;
 export const Year = styled.p`
   margin: 0;
@@ -69,4 +69,8 @@ export const MainDetails = styled.div`
 `;
 export const OtherDetails = styled.section`
   margin: 0.5rem;
+`;
+
+export const Headline = styled.div`
+  display: flex;
 `;

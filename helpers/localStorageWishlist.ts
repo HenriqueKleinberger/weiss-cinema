@@ -17,17 +17,17 @@ export const getMoviesFromLocalStorage = (): IMovie[] => {
   return [];
 };
 
-export const isMovieOnWishlist = (movie: IMovie) => {
+export const isMovieOnLocalStorage = (movie: IMovie) => {
   const movies = getMoviesFromLocalStorage();
   return movies.find((m) => m.imdbID === movie.imdbID) !== undefined;
 };
 
-export const toggleMovieOnWishlist = (movie: IMovie) => {
+export const toggleMovieOnLocalStorage = (movie: IMovie) => {
   const movies = getMoviesFromLocalStorage();
   window.localStorage.setItem(
     LOCAL_STORAGE_WISHLIST,
     JSON.stringify(
-      isMovieOnWishlist(movie)
+      isMovieOnLocalStorage(movie)
         ? movies.filter((m) => m.imdbID !== movie.imdbID)
         : movies.concat([movie])
     )
