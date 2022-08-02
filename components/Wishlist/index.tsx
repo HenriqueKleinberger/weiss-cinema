@@ -24,6 +24,7 @@ const Wishlist = () => {
             movie={m}
             key={m.imdbID}
             removeMovieFromWishlist={removeMovieFromWishlist}
+            isWishlist
           />
         ))
       )}

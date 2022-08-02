@@ -13,4 +13,5 @@ export const Button = styled.button<IBtn>`
   stroke: var(--primary);
   stroke-width: 25px;
   fill: ${(props) => (props.active ? 'var(--primary)' : '#000000')};
+  z-index: 1;
 `;

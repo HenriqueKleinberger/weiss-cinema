@@ -4,6 +4,17 @@ interface IBox {
   isHovered: boolean;
 }
 
+export const Hovered = styled.div`
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  margin: 7%;
+`;
+
 export const Container = styled.div`
   position: relative;
   height: 18.75rem;

@@ -1,6 +1,6 @@
 import PosterImg from '../Poster';
 import { ERROR_SEARCHING_MOVIE_DETAILS } from '../../../constants/messages';
-import { IMovieDetails } from '../../../types';
+import { IMovie, IMovieDetails } from '../../../types';
 import {
   Container,
   Data,
@@ -20,7 +20,7 @@ import Like from '../Like';
 interface IProps {
   movieDetails: IMovieDetails | null;
   loading: boolean;
-  removeMovieFromWishlist?: () => void;
+  removeMovieFromWishlist?: (movie: IMovie) => void;
 }
 
 const showInfo = (info: string) => info || 'N/A';
