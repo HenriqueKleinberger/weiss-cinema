@@ -29,10 +29,11 @@ export default function useMovieSearch(query: string, page: number) {
             ...res.data.movies,
           ]);
           setHasMore(movies.length !== res.data.totalResults);
+          setLoading(false);
         } else {
           setErrorMessage(res.data.message);
+          setLoading(false);
         }
-        setLoading(false);
       })
       .catch((e) => {
         setLoading(false);
