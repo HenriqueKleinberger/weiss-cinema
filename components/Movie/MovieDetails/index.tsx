@@ -1,4 +1,4 @@
-import PosterImg from '../Poster';
+import Poster from '../Poster';
 import { ERROR_SEARCHING_MOVIE_DETAILS } from '../../../constants/messages';
 import { IMovie, IMovieDetails } from '../../../types';
 import {
@@ -9,13 +9,13 @@ import {
   Title,
   Year,
   OtherDetails,
-  Poster,
   ErrorData,
   PosterLoading,
   InfoLoading,
-  Headline,
+  Row,
 } from './styles';
 import Like from '../Like';
+import { DATA_NOT_AVAILABLE } from '../../../constants/movie';
 
 interface IProps {
   movieDetails: IMovieDetails | null;
@@ -23,7 +23,7 @@ interface IProps {
   removeMovieFromWishlist?: (movie: IMovie) => void;
 }
 
-const showInfo = (info: string) => info || 'N/A';
+const showInfo = (info: string) => info || DATA_NOT_AVAILABLE;
 
 const MovieDetails = ({
   movieDetails,
@@ -60,18 +60,13 @@ const MovieDetails = ({
   return (
     <Container>
       <Data>
-        <Poster>
-          <PosterImg movie={movieDetails} />
-        </Poster>
+        <Poster movie={movieDetails} isDetails />
         <Details>
           <MainDetails>
-            <Headline>
+            <Row>
               <Title>{movieDetails.title}</Title>
-              <Like
-                movie={movieDetails}
-                removeMovieFromWishlist={removeMovieFromWishlist}
-              />
-            </Headline>
+              <Like movie={movieDetails} action={removeMovieFromWishlist} />
+            </Row>
             <Year>{movieDetails.year}</Year>
           </MainDetails>
           <OtherDetails>

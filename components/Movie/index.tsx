@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { IMovie, IMovieDetails } from '../../types';
 import useHover from '../../hooks/useHover';
 import BasicInfo from './BasicInfo';
-import { Container, Box, Hovered } from './styles';
+import { Container, Box, ShowLikeButton } from './styles';
 import MovieDetails from './MovieDetails';
 import Poster from './Poster';
 import axios from 'axios';
@@ -11,10 +11,14 @@ import Like from './Like';
 interface IProps {
   movie: IMovie;
   removeMovieFromWishlist?: (movie: IMovie) => void;
-  isWishlist: boolean;
+  shouldShowLikeButton: boolean;
 }
 
-const Movie = ({ movie, removeMovieFromWishlist, isWishlist }: IProps) => {
+const Movie = ({
+  movie,
+  removeMovieFromWishlist,
+  shouldShowLikeButton,
+}: IProps) => {
   const [hoverRef, isHovered, removeHover] = useHover<HTMLDivElement>();
   const [showModal, setShowModal] = useState(false);
   const [details, setDetails] = useState<IMovieDetails | null>(null);
@@ -30,7 +34,7 @@ const Movie = ({ movie, removeMovieFromWishlist, isWishlist }: IProps) => {
     setLoading(true);
     try {
       const response = await axios.get<IMovieDetails>(
-        `${process.env.NEXT_PUBLIC_API_URL}/movie/details`,
+        `${process.env.NEXT_PUBLIC_API_URL}/OMDB/movie/details`,
         {
           params: { imdbId: movie.imdbID },
         }
@@ -47,16 +51,13 @@ const Movie = ({ movie, removeMovieFromWishlist, isWishlist }: IProps) => {
   return (
     <Container ref={hoverRef} onClick={openModal}>
       <Box isHovered={isHovered}>
-        <Poster movie={movie} />
+        <Poster movie={movie} isDetails={false} />
+        {shouldShowLikeButton && (
+          <ShowLikeButton>
+            <Like action={removeMovieFromWishlist} movie={movie} />
+          </ShowLikeButton>
+        )}
       </Box>
-      {isWishlist && (
-        <Hovered>
-          <Like
-            movie={movie}
-            removeMovieFromWishlist={removeMovieFromWishlist}
-          />
-        </Hovered>
-      )}
       {isHovered && (
         <BasicInfo
           movie={movie}

@@ -18,7 +18,7 @@ export default function useMovieSearch(query: string, page: number) {
     setLoading(true);
     let cancel: Canceler;
     axios
-      .get<IMoviesResponse>(`${process.env.NEXT_PUBLIC_API_URL}/movie`, {
+      .get<IMoviesResponse>(`${process.env.NEXT_PUBLIC_API_URL}/OMDB/movie`, {
         params: { title: query, page },
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
       })
@@ -29,10 +29,11 @@ export default function useMovieSearch(query: string, page: number) {
             ...res.data.movies,
           ]);
           setHasMore(movies.length !== res.data.totalResults);
+          setLoading(false);
         } else {
           setErrorMessage(res.data.message);
+          setLoading(false);
         }
-        setLoading(false);
       })
       .catch((e) => {
         setLoading(false);
