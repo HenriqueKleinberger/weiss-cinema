@@ -23,7 +23,7 @@ const Home: NextPage = () => {
   );
 
   const observer = useRef<IntersectionObserver | null>(null);
-  const lastBookElementRef = useCallback(
+  const lastMovieElementRef = useCallback(
     (node: Element) => {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
@@ -51,11 +51,11 @@ const Home: NextPage = () => {
       <SearchInput value={query} setValue={changeQuery} />
       <SearchMovieSeparator searched={query} message={SEARCH_RESULTS_FOR} />
       <MovieContainer>
-        {!query && !loading && <SearchMovie />}
+        {!query && <SearchMovie />}
         {movies.map((m, index) => {
           if (movies.length === index + 1) {
             return (
-              <div ref={lastBookElementRef}>
+              <div ref={lastMovieElementRef}>
                 <Movie movie={m} key={m.imdbID} />
               </div>
             );

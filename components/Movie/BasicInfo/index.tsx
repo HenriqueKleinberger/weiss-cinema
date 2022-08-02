@@ -7,7 +7,6 @@ interface IProps {
   removeMovieFromWishlist?: (movie: IMovie) => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
 const BasicInfo = ({ movie, removeMovieFromWishlist }: IProps) => {
   const getMovieTitle = () => {
     if (movie.title.length >= 90)
