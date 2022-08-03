@@ -17,7 +17,10 @@ const BasicInfo = ({ movie, removeMovieFromWishlist }: IProps) => {
   return (
     <Hovered>
       <Wishlist>
-        <Like movie={movie} action={removeMovieFromWishlist} />
+        <Like
+          movie={movie}
+          toggleMovieWishlistCallback={removeMovieFromWishlist}
+        />
       </Wishlist>
       <Data>
         <p>{getMovieTitle()}</p>

@@ -13,11 +13,11 @@ import { IMovie } from '../../../types';
 
 interface IProps {
   movie: IMovie;
-  action?: (movie: IMovie) => void;
+  toggleMovieWishlistCallback?: (movie: IMovie) => void;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-const Like = ({ movie, action = () => {} }: IProps) => {
+const Like = ({ movie, toggleMovieWishlistCallback = () => {} }: IProps) => {
   const [isOnWishlist, setIsOnWishlist] = useState(false);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Like = ({ movie, action = () => {} }: IProps) => {
     e.stopPropagation();
     toggleMovieOnLocalStorage(movie);
     setIsOnWishlist(!isOnWishlist);
-    action(movie);
+    toggleMovieWishlistCallback(movie);
   };
 
   return (

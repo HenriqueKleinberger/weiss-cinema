@@ -65,7 +65,10 @@ const MovieDetails = ({
           <MainDetails>
             <Row>
               <Title>{movieDetails.title}</Title>
-              <Like movie={movieDetails} action={removeMovieFromWishlist} />
+              <Like
+                movie={movieDetails}
+                toggleMovieWishlistCallback={removeMovieFromWishlist}
+              />
             </Row>
             <Year>{movieDetails.year}</Year>
           </MainDetails>

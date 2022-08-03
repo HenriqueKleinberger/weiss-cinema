@@ -47,7 +47,7 @@ describe('Like', () => {
           title: 'Title',
           year: '2022',
         }}
-        action={removeMovieFromWishlist}
+        toggleMovieWishlistCallback={removeMovieFromWishlist}
       />
     );
     wrapper.update();

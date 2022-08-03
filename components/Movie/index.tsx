@@ -54,7 +54,10 @@ const Movie = ({
         <Poster movie={movie} isDetails={false} />
         {shouldShowLikeButton && (
           <ShowLikeButton>
-            <Like action={removeMovieFromWishlist} movie={movie} />
+            <Like
+              toggleMovieWishlistCallback={removeMovieFromWishlist}
+              movie={movie}
+            />
           </ShowLikeButton>
         )}
       </Box>
